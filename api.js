@@ -22,7 +22,7 @@ let classColors = {
   'Demon Hunter': '#A330C9',
   'Evoker': '#5DB7A2'
 };
-
+//
 let table = document.getElementById('results');
 
 characters.forEach(character => {
