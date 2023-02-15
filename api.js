@@ -1,6 +1,6 @@
 let characters = ['Snylerdh', 'Sinjabusif', 'Jøyboy', 'Sizko', 'Qhrynne', 'Pititpeluche', 'Staxlock', 'Shikoroh', 
                     'Dustykai', 'Misakura', 'Nonolildrake', 'Bearjeww', 'Kujaalcoolic', 'Herarogue', 'Louisée', 'Daarkhër',
-                     'Surlegrill', 'Cùrtis', 'Lahëe', 'Supxoxo']
+                     'Surlegrill', 'Cùrtis', 'Lahëe', 'Supxoxo'];
 
 let region = 'eu';
 let realm = 'Ysondre';
@@ -22,11 +22,15 @@ let classColors = {
   'Demon Hunter': '#A330C9',
   'Evoker': '#5DB7A2'
 };
-//
+
 let table = document.getElementById('results');
 
+let characterRuns = [];
+
+// Retrieve the data for each character and store their runs in the characterRuns array
 characters.forEach(character => {
-  let url = `https://raider.io/api/v1/characters/profile?region=${region}&realm=${realm}&name=${character}&fields=${fields}`;
+  let url = `https://raider.io/api/v1/characters/profile?region=${region}&realm=${realm}&name=${character}&fields=${fields},class`;
+
 
   fetch(url)
     .then(response => response.json())
@@ -38,22 +42,37 @@ characters.forEach(character => {
         .sort((a, b) => b.mythic_level - a.mythic_level)
         .slice(0, 8);
 
-      // get the character class and color
+      let totalMythicLevel = topRuns.reduce((acc, run) => acc + run.mythic_level, 0);
+
+      // push an object representing the character's runs and total mythic level to the characterRuns array
       let charClass = data.class;
-      let color = classColors[charClass] || 'white';
+      characterRuns.push({ name: character, runs: topRuns, totalMythicLevel, class: charClass });
 
-      // create a row for the character
-      let row = table.insertRow();
-      let nameCell = row.insertCell();
-      let dungeonCell = row.insertCell();
-
-      nameCell.innerHTML = character;
-      dungeonCell.innerHTML = topRuns.map(run => run.mythic_level).join(', ');
-
-      // set the row color based on the character class
-      row.style.backgroundColor = color;
     })
     .catch(error => {
       console.error(`Error getting data for ${character}: ${error}`);
     });
 });
+
+// Once all the data has been retrieved, sort the characterRuns array by total mythic level
+// and create rows in the table for each character's top runs
+setTimeout(() => {
+  characterRuns.sort((a, b) => b.totalMythicLevel - a.totalMythicLevel);
+
+  characterRuns.forEach(character => {
+    let name = character.name;
+    let runs = character.runs;
+    let color = classColors[character.class] || 'white';
+
+    // create a row for the character
+    let row = table.insertRow();
+    let nameCell = row.insertCell();
+    let dungeonCell = row.insertCell();
+
+    nameCell.innerHTML = name;
+    dungeonCell.innerHTML = runs.map(run => run.mythic_level).join(', ');
+
+    // set the row color based on the character class
+    row.style.backgroundColor = color;
+  });
+}, 2000);
