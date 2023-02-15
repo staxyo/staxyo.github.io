@@ -1,6 +1,6 @@
 let characters = ['Snylerdh', 'Sinjabusif', 'Jøyboy', 'Sizko', 'Qhrynne', 'Pititpeluche', 'Staxlock', 'Shikoroh', 
                     'Dustykai', 'Misakura', 'Nonolildrake', 'Bearjeww', 'Kujaalcoolic', 'Herarogue', 'Louisée', 'Daarkhër',
-                     'Surlegrill', 'Cùrtis', 'Lahëe', 'Supxoxo'];
+                     'Surlegrill', 'Cùrtis', 'Lahëe', 'Supxoxo','Yukalock'];
 
 let region = 'eu';
 let realm = 'Ysondre';
