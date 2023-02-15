@@ -78,6 +78,7 @@ setTimeout(() => {
 }, 2000);
 
 setInterval(() => {
+  characterRuns = [];
   characters.forEach(character => {
     let url = `https://raider.io/api/v1/characters/profile?region=${region}&realm=${realm}&name=${character}&fields=${fields},class`;
     
