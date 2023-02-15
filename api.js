@@ -128,5 +128,5 @@ setInterval(() => {
     
     // reset the characterRuns array
     characterRuns = [];
-  }, 2000);
+  }, 1000);
 }, 600000);
