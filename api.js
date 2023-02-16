@@ -86,4 +86,4 @@ setTimeout(() => {
     // set the row color based on the character class
     row.style.backgroundColor = color;
   });
-}, 2000);
+}, 3000);
