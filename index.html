@@ -6,14 +6,28 @@
     <link rel="icon" href="logo.png">
   </head>
   <body>
-    <h1>Weekly Mythic Plus Runs</h1>
-    <table>
+
+  <div id="table-container">
+    <div id="results-container">
+    <table id="results" class="table">
       <tr>
         <th>Character</th>
         <th>Highest Mythic Plus Runs</th>
       </tr>
       <tbody id="results"></tbody>
     </table>
+  </div>
+  <div id="alt-results-container">
+    <table id="alt-results" class="table">
+      <tr>
+        <th>Alt Characters</th>
+        <th>Highest Mythic Plus Runs</th>
+      </tr>
+      <tbody id="alt-results"></tbody>
+    </table>
+  </div>
+</div>
+
     <script src="api.js"></script>
   </body>
 </html>
