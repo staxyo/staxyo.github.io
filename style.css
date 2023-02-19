@@ -41,7 +41,8 @@ td {
     flex-basis: 50%;
   }
 
-  #alt-results {
+  #alt-results,
+  #results {
     min-width: 500px;
   }
   
