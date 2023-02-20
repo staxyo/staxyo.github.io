@@ -36,7 +36,6 @@ let altCharacterRuns = [];
 characters.forEach(character => {
   let url = `https://raider.io/api/v1/characters/profile?region=${region}&realm=${realm}&name=${character}&fields=${fields},class`;
 
-
   fetch(url)
     .then(response => response.json())
     .then(data => {
@@ -48,11 +47,11 @@ characters.forEach(character => {
         .slice(0, 8);
 
       let totalMythicLevel = topRuns.reduce((acc, run) => acc + run.mythic_level, 0);
+      let numRuns = topRuns.length;
 
       // push an object representing the character's runs and total mythic level to the characterRuns array
       let charClass = data.class;
-      characterRuns.push({ name: character, runs: topRuns, totalMythicLevel, class: charClass });
-
+      characterRuns.push({ name: character, runs: topRuns, totalMythicLevel, numRuns, class: charClass });
     })
     .catch(error => {
       console.error(`Error getting data for ${character}: ${error}`);
@@ -73,11 +72,11 @@ altCharacters.forEach(character => {
         .slice(0, 8);
 
       let totalMythicLevel = topRuns.reduce((acc, run) => acc + run.mythic_level, 0);
+      let numRuns = topRuns.length;
 
-      // push an object representing the character's runs and total mythic level to the altCharacterRuns array
+      // push an object representing the character's runs and total mythic level to the characterRuns array
       let charClass = data.class;
-      altCharacterRuns.push({ name: character, runs: topRuns, totalMythicLevel, class: charClass });
-
+      altCharacterRuns.push({ name: character, runs: topRuns, totalMythicLevel, numRuns, class: charClass });
     })
     .catch(error => {
       console.error(`Error getting data for ${character}: ${error}`);
@@ -90,6 +89,7 @@ setTimeout(() => {
   altCharacterRuns.forEach(character => {
     let name = character.name;
     let runs = character.runs;
+    let numRuns = character.numRuns;
     let color = classColors[character.class] || 'white';
 
     // create a row for the alt character
@@ -97,27 +97,29 @@ setTimeout(() => {
     row.classList.add('table-row'); // add the class to the row
     let nameCell = row.insertCell();
     let dungeonCell = row.insertCell();
+    let numRunsCell = row.insertCell();
 
     nameCell.innerHTML = name;
     dungeonCell.innerHTML = runs
     .map(run => ('' + run.mythic_level).slice(-2)) // pad the number with a leading 0 in case the key is lower than 10
-    .reduce((acc, level, index) => {
-      if (index === 1) {
-        acc.push([level + ',']);
-      } else if (index === 3) {
-        acc[acc.length - 1].push(level + ',');
-        acc.push([]);
-      } else if (index === 7) {
-        acc[acc.length - 1].push(level);
-        acc.push([]);
-      } else {
-        acc[acc.length - 1].push(level + ',');
-      }
-      return acc;
-    }, [[]])
-    .map(group => group.join('').replace(/,$/, ' '))
+      .reduce((acc, level, index) => {
+        if (index === 1) {
+          acc.push([level + ',']);
+        } else if (index === 3) {
+          acc[acc.length - 1].push(level + ',');
+          acc.push([]);
+        } else if (index === 7) {
+          acc[acc.length - 1].push(level);
+          acc.push([]);
+        } else {
+          acc[acc.length - 1].push(level + ',');
+        }
+        return acc;
+      }, [[]])
+      .map(group => group.join('').replace(/,$/, ' '))
     .join('|| ');
-    row.style.backgroundColor = color;
+      row.style.backgroundColor = color;
+    numRunsCell.innerHTML = numRuns;
   });
 }, 3000);
 
@@ -129,6 +131,7 @@ setTimeout(() => {
   characterRuns.forEach(character => {
     let name = character.name;
     let runs = character.runs;
+    let numRuns = character.numRuns;
     let color = classColors[character.class] || 'white';
 
     // create a row for the character
@@ -136,26 +139,28 @@ setTimeout(() => {
     row.classList.add('table-row'); // add the class to the row
     let nameCell = row.insertCell();
     let dungeonCell = row.insertCell();
+    let numRunsCell = row.insertCell();
 
     nameCell.innerHTML = name;
     dungeonCell.innerHTML = runs
-    .map(run => ('0' + run.mythic_level).slice(-2)) // pad the number with a leading 0 in case the key is lower than 10
-    .reduce((acc, level, index) => {
-      if (index === 1) {
-        acc.push([level + ',']);
-      } else if (index === 3) {
-        acc[acc.length - 1].push(level + ',');
-        acc.push([]);
-      } else if (index === 7) {
-        acc[acc.length - 1].push(level);
-        acc.push([]);
-      } else {
-        acc[acc.length - 1].push(level + ',');
-      }
-      return acc;
-    }, [[]])
-    .map(group => group.join('').replace(/,$/, ' '))
+      .map(run => ('' + run.mythic_level).slice(-2)) // pad the number with a leading 0 in case the key is lower than 10
+      .reduce((acc, level, index) => {
+        if (index === 1) {
+          acc.push([level + ',']);
+        } else if (index === 3) {
+          acc[acc.length - 1].push(level + ',');
+          acc.push([]);
+        } else if (index === 7) {
+          acc[acc.length - 1].push(level);
+          acc.push([]);
+        } else {
+          acc[acc.length - 1].push(level + ',');
+        }
+        return acc;
+      }, [[]])
+      .map(group => group.join('').replace(/,$/, ' '))
     .join('|| ');
-    row.style.backgroundColor = color;
+      row.style.backgroundColor = color;
+    numRunsCell.innerHTML = numRuns;
   });
 }, 3000);
