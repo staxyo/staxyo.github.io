@@ -1,9 +1,9 @@
 let characters = ['Snylerdh', 'Sinjabusif', 'Jøyboy', 'Sizko', 'Qhrynne', 'Pititpeluche', 'Staxlock', 'Shikoroh', 
                     'Dustykai', 'Misakura', 'Nonolildrake', 'Bearjeww', 'Kujaalcoolic', 'Herarogue', 'Louisée', 'Daarkhër',
-                     'Surlegrill', 'Cùrtis', 'Lahëe', 'Supxoxo','Yukalock'];
+                     'Surlegrill', 'Cùrtis', 'Carrypotter', 'Supxoxo','Yukalock'];
 
 let altCharacters = ['Qhryme', 'Misasuke', 'Staxette', 'Stâx', 'Dustiny', 'Dustylish', 'Gigapuddi', 'Siskoshamn',
-                       'Curtís', 'Misalamèche', 'Sisköe', 'Peluchevoker', 'Lahee', 'Sñyler', 'Misarrow']
+                       'Curtís', 'Misalamèche', 'Sisköe', 'Peluchevoker', 'Sñyler', 'Misarrow']
 
 let region = 'eu';
 let realm = 'Ysondre';
