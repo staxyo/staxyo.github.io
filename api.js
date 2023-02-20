@@ -100,19 +100,23 @@ setTimeout(() => {
 
     nameCell.innerHTML = name;
     dungeonCell.innerHTML = runs
-    .map(run => ('' + run.mythic_level).slice(-2))
+    .map(run => ('' + run.mythic_level).slice(-2)) // pad the number with a leading 0 in case the key is lower than 10
     .reduce((acc, level, index) => {
-      if (index % 2 === 0) {
-        acc.push([level]);
-      } else {
+      if (index === 1) {
+        acc.push([level + ',']);
+      } else if (index === 3) {
+        acc[acc.length - 1].push(level + ',');
+        acc.push([]);
+      } else if (index === 7) {
         acc[acc.length - 1].push(level);
+        acc.push([]);
+      } else {
+        acc[acc.length - 1].push(level + ',');
       }
       return acc;
-    },[])
-    .map(group => group.join(','))
-    .join(' || ')
-
-    // set the row color based on the character class
+    }, [[]])
+    .map(group => group.join('').replace(/,$/, ' '))
+    .join('|| ');
     row.style.backgroundColor = color;
   });
 }, 3000);
@@ -137,17 +141,21 @@ setTimeout(() => {
     dungeonCell.innerHTML = runs
     .map(run => ('0' + run.mythic_level).slice(-2)) // pad the number with a leading 0 in case the key is lower than 10
     .reduce((acc, level, index) => {
-      if (index % 2 === 0) {
-        acc.push([level]);
-      } else {
+      if (index === 1) {
+        acc.push([level + ',']);
+      } else if (index === 3) {
+        acc[acc.length - 1].push(level + ',');
+        acc.push([]);
+      } else if (index === 7) {
         acc[acc.length - 1].push(level);
+        acc.push([]);
+      } else {
+        acc[acc.length - 1].push(level + ',');
       }
       return acc;
-    },[])
-    .map(group => group.join(',')) // joins the two runs in each group together
-    .join(' || ') // join the three groups together with commas
-
-    // set the row color based on the character class
+    }, [[]])
+    .map(group => group.join('').replace(/,$/, ' '))
+    .join('|| ');
     row.style.backgroundColor = color;
   });
 }, 3000);
