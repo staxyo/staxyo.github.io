@@ -3,7 +3,7 @@ let characters = ['Snylerdh', 'Sinjabusif', 'Jøyboy', 'Sizko', 'Qhrynne', 'Piti
                      'Surlegrill', 'Cùrtis', 'Supxoxo'];
 
 let altCharacters = ['Qhryme', 'Misasuke', 'Staxette', 'Stâx', 'Dustiny', 'Dustylish', 'Gigapuddi', 'Siskoshamn',
-                       'Curtís', 'Misalamèche', 'Sisköe', 'Peluchevoker', 'Sñyler', 'Misarrow']
+                       'Curtís', 'Misalamèche', 'Sisköe', 'Peluchevoker', 'Sñyler', 'Misarrow', 'Dustea']
 
 let region = 'eu';
 let realm = 'Ysondre';
