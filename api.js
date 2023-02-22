@@ -98,6 +98,14 @@ setTimeout(() => {
     let nameCell = row.insertCell();
     let dungeonCell = row.insertCell();
     let numRunsCell = row.insertCell();
+if (numRuns > 0) {
+  numRunsCell.innerHTML = numRuns;
+} else {
+  let img = document.createElement('img');
+  img.src = 'starege.png';
+  img.classList.add('numRunsImage');
+  numRunsCell.appendChild(img);
+}
 
     nameCell.innerHTML = name;
     dungeonCell.innerHTML = runs
@@ -119,7 +127,7 @@ setTimeout(() => {
       .map(group => group.join('').replace(/,$/, ' '))
     .join('|| ');
       row.style.backgroundColor = color;
-    numRunsCell.innerHTML = numRuns;
+    
   });
 }, 3000);
 
@@ -140,6 +148,14 @@ setTimeout(() => {
     let nameCell = row.insertCell();
     let dungeonCell = row.insertCell();
     let numRunsCell = row.insertCell();
+    if (numRuns > 0) {
+      numRunsCell.innerHTML = numRuns;
+    } else {
+      let img = document.createElement('img');
+      img.src = 'starege.png';
+      img.classList.add('numRunsImage');
+      numRunsCell.appendChild(img);
+    }
 
     nameCell.innerHTML = name;
     dungeonCell.innerHTML = runs
@@ -161,6 +177,6 @@ setTimeout(() => {
       .map(group => group.join('').replace(/,$/, ' '))
     .join('|| ');
       row.style.backgroundColor = color;
-    numRunsCell.innerHTML = numRuns;
+   
   });
 }, 3000);
