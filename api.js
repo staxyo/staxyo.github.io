@@ -1,5 +1,5 @@
 let characters = ['Snylerdh', 'Sinjabusif', 'Jøyboy', 'Sizko', 'Qhrynne', 'Pititpeluche', 'Staxlock', 'Shikoroh', 
-                    'Dustykai', 'Misakura', 'Nonolildrake', 'Bearjeww', 'Kujaalcoolic', 'Herarogue', 'Louisée', 'Daarkhër',
+                    'Dustykai', 'Misakura', 'Nonolildrake', 'Bearjeww', 'Herarogue', 'Louisée', 'Daarkhër',
                      'Surlegrill', 'Cùrtis', 'Supxoxo'];
 
 let altCharacters = ['Qhryme', 'Misasuke', 'Staxette', 'Stâx', 'Dustiny', 'Dustylish', 'Gigapuddi', 'Siskoshamn',
